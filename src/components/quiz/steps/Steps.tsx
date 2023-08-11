@@ -55,8 +55,7 @@ const Steps: FunctionComponent = ({}) => {
   const steps: StepsCollection = {
     [StepType.HOBBY]: {
       buttons: [
-        // @hardcode
-        // return first step
+        { title: '🧑🏽‍💻 Ilmu Komputer', value: 'komputer' },
         { title: '🎨 Seni, lukisan, desain', value: 'desain' },
         { title: '📐 Matematika', value: 'matematika' },
         { title: '📚 Kultur dan Sejarah', value: 'kultur' },
