@@ -1,22 +1,23 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
+import Quiz from '../components/quiz';
 ---
 
-<Layout title="Welcome to Astro.">
+<Layout title="Jawablah beberapa pertanyaan dan dapatkan kelas coding gratis untuk anak Anda">
   <div class="container">
     <div class="content">
       <div class="logo"></div>
       <div class="about">
         <div class="title">
-          Algo
+          Dapatkan pelajaran pemrograman gratis untuk anak Anda dalam 4 langkah
         </div>
         <div class="description">
           <p>👦🏽 Untuk anak usia 5-17 tahun</p>
           <p>🖥️ Membuat proyek IT kecil pertamanya</p>
           <p>🥇 Membahas pengalaman dan hobi anak</p>
         </div>
-        <button>Mulai</button>
+
+        <Quiz />
       </div>
     </div>
   </div>
@@ -43,7 +44,9 @@ import Card from '../components/Card.astro';
       right: 0;
       bottom: 0;
 
+      /* @hardcode
       background: url(/background.webp) no-repeat;
+      */
       background-position: bottom right;
       background-size: cover;
 
@@ -114,31 +117,5 @@ import Card from '../components/Card.astro';
     font-size: 18px;
     line-height: 24px;
     padding-bottom: 8px;
-  }
-
-  button {
-    display: inline-flex;
-    flex-shrink: 0;
-    -webkit-box-align: center;
-    align-items: center;
-    -webkit-box-pack: center;
-    justify-content: center;
-    cursor: pointer;
-    font-family: "Cera CY", Helvetica, Arial, sans-serif;
-    font-size: 18px;
-    line-height: 24px;
-    height: 48px;
-    background-color: rgb(131, 58, 224);
-    color: rgb(255, 255, 255);
-    border-width: initial;
-    border-style: none;
-    border-color: initial;
-    border-image: initial;
-    outline: none;
-    transition: color 0.2s ease 0s, background-color;
-    margin: 0px;
-    padding: 0px 24px;
-    border-radius: 12px;
-    width: 341px;
   }
 </style>

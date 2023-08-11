@@ -1,0 +1,96 @@
+---
+import Steps from './steps';
+---
+
+<div>
+  <button id="button">Mulai</button>
+  <div id="popup" class="popup-backdrop">
+    <div class="popup-wrapper">
+      <div class="popup-content">
+        <Steps client:only="react" />
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const button = document.getElementById('button');
+  const popup = document.getElementById('popup');
+
+  button.addEventListener('click', () => {
+    popup.classList.add('is-visible');
+  });
+
+  popup.addEventListener('click', (event) => {
+    if (event.target === event.currentTarget) {
+      popup.classList.remove('is-visible');
+    }
+  });
+</script> 
+
+<style>
+  button {
+    -webkit-box-align: center;
+    -webkit-box-pack: center;
+    align-items: center;
+    background-color: rgb(131, 58, 224);
+    border-radius: 12px;
+    border-style: none;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+    display: inline-flex;
+    flex-shrink: 0;
+    font-family: 'Cera CY', Helvetica, Arial, sans-serif;
+    font-size: 18px;
+    height: 48px;
+    justify-content: center;
+    line-height: 24px;
+    margin: 0px;
+    outline: none;
+    padding: 0px 24px;
+    transition: color 0.2s ease 0s, background-color;
+    width: 341px;
+  }
+
+  .popup-backdrop {
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.3);
+    display: none;
+    height: 100%;
+    left: 0px;
+    opacity: 0;
+    overflow: hidden scroll;
+    padding: 32px 64px;
+    place-content: center;
+    position: fixed;
+    top: 0px;
+    transition: opacity 0.3s cubic-bezier(0.5, 0, 0.7, 1) 0s;
+    width: 100%;
+    z-index: 6000;
+  }
+
+  .popup-backdrop.is-visible {
+    display: flex;
+    opacity: 1; 
+  }
+
+  .popup-wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 28px 28px 32px;
+    width: max-content;
+    background: rgb(255, 255, 255);
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 20px 28px -8px;
+    border-radius: 12px;
+    z-index: 6000;
+    margin: auto;
+    opacity: 1;
+    transform: translateY(0px);
+    transition: all 0.3s cubic-bezier(0.5, 0, 0.7, 1) 0s; 
+  }
+
+  .popup-content {
+  
+  }
+</style>
