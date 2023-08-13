@@ -5,6 +5,7 @@ import { Colors } from '../colors';
 const defaultStyle = css`
   margin: 0;
   color: ${Colors.black_pearl};
+  font-family: 'Cera CY', Helvetica, Arial, sans-serif;
 `;
 
 export const p1Style = css`

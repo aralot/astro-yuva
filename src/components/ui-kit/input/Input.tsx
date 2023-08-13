@@ -18,7 +18,8 @@ export const Input: FunctionComponent<IInputProps> = ({
   qaAttribute,
   ...props
 }) => {
-  const theme = useTheme();
+  // @hardcode
+  // const theme = useTheme();
 
   return (
     <div className={className}>

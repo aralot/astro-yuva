@@ -1,8 +1,10 @@
 import styled, { css } from 'styled-components';
 
+import { Colors } from '../colors';
+
 const defaultStyle = css`
   margin: 0;
-  color: ${({ theme }) => theme.palette.black_pearl};
+  color: ${({ theme }) => Colors.black_pearl};
 `;
 
 export const h1Style = css`

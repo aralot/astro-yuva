@@ -1,0 +1,62 @@
+---
+import { Icon } from 'astro-icon';
+
+import {
+  Button,
+  Description,
+  Item,
+  Title,
+  Wrapper,
+} from '../../components/southeastAsia';
+---
+
+<Wrapper>
+  <Title>
+    Mohon maaf Anda belum dapat melanjutkan pendaftaran{' '}
+    <Icon name="smileWithTear" />
+  </Title>
+  <Description>
+    <Item>
+      Untuk mengikuti kelas uji coba dibutuhkan
+      laptop/komputer untuk belajar. Kami harap bisa bertemu
+      Anda di lain waktuNamun Anda dapat mengikuti jejaring
+      sosial kami, ada banyak informasi bermanfaat untuk orang
+      tua Indonesia
+    </Item>
+  </Description>
+  <div class="social-buttons">
+    <Button
+      as="link" 
+      href="https://www.instagram.com/algorithmics_indonesia"
+      target="_blank"
+      rel="noopener noreferrer"
+      style="flex-grow: 1"
+    ><Icon name="instagram" />Instagram</Button>
+    <Button
+      as="link" 
+      href="https://www.facebook.com/algoritmika.indonesia"
+      target="_blank"
+      rel="noopener noreferrer"
+      style="flex-grow: 1"
+    ><Icon name="facebook" />Facebook</Button>
+  </div>
+</Wrapper>
+
+<style>
+  [astro-icon="smileWithTear"] {
+    width: 7%;
+    height: 7%;
+  }
+
+  [astro-icon="instagram"],
+  [astro-icon="facebook"] {
+    width: 24px;
+    height: 24px;
+    padding-right: 8px;
+  }
+
+  .social-buttons {
+    display: flex;
+    column-gap: 8px;
+  }
+</style>

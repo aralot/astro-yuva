@@ -1,9 +1,10 @@
 ---
+import Button from '../button';
 import Steps from './steps';
 ---
 
 <div>
-  <button id="button">Mulai</button>
+  <Button id="button" style="width: 341px" size="large">Mulai</Button>
   <div id="popup" class="popup-backdrop">
     <div class="popup-wrapper">
       <div class="popup-content">
@@ -29,29 +30,6 @@ import Steps from './steps';
 </script> 
 
 <style>
-  button {
-    -webkit-box-align: center;
-    -webkit-box-pack: center;
-    align-items: center;
-    background-color: rgb(131, 58, 224);
-    border-radius: 12px;
-    border-style: none;
-    color: rgb(255, 255, 255);
-    cursor: pointer;
-    display: inline-flex;
-    flex-shrink: 0;
-    font-family: 'Cera CY', Helvetica, Arial, sans-serif;
-    font-size: 18px;
-    height: 48px;
-    justify-content: center;
-    line-height: 24px;
-    margin: 0px;
-    outline: none;
-    padding: 0px 24px;
-    transition: color 0.2s ease 0s, background-color;
-    width: 341px;
-  }
-
   .popup-backdrop {
     align-items: center;
     background-color: rgba(0, 0, 0, 0.3);

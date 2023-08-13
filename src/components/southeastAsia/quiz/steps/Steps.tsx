@@ -1,15 +1,17 @@
 import React, { FunctionComponent, useState, useCallback } from 'react';
 
-import { Button, ButtonKind } from '../../ui-kit';
+import { Button, ButtonKind } from '../../../ui-kit';
 
 import FavoriteSubject from './FavoriteSubject';
 import Age from './Age';
 import HasLaptop from './HasLaptop';
 import Schedule from './Schedule';
+import Contact from './Contact';
+import ProgressBar from './progressBar';
 
 import { BRANCH_CODE_INDONESIA, useForm } from './useForm';
 import { LOCALE, TIME_ZONE, StepsCollection, StepType } from './types';
-import { Wrapper, Content, ButtonsWrapper } from './styles';
+import { Wrapper, Content, ButtonsWrapper, StyledH2 } from './styles';
 
 const BEFORE_MOVE_TO_NEXT_STEP_DELAY_MS = 200;
 const FIRST_STEP = StepType.HOBBY;
@@ -25,8 +27,9 @@ export const getDateRangeLabel = (date: Date) => {
 };
 
 const Steps: FunctionComponent = ({}) => {
-  const [stepType, setStepType] = useState(FIRST_STEP);
   const [isSlotUsed, setIsSlotUsed] = useState(false);
+  const [stepType, setStepType] = useState(FIRST_STEP);
+  const [isChecked, setIsChecked] = useState(true);
 
   const {
     childAge,
@@ -115,6 +118,11 @@ const Steps: FunctionComponent = ({}) => {
       ),
       value: timeSlotValue,
     },
+    [StepType.CONTACT]: {
+      component: Contact,
+      title: <span>5. Silakan tinggalkan kontak Anda</span>,
+    },
+    [StepType.SLOT_USED]: {},
   };
 
   const nextStep = useCallback(() => {
@@ -125,12 +133,34 @@ const Steps: FunctionComponent = ({}) => {
     setStepType(index => index - 1);
   }, []);
 
+  const submit = useCallback(
+    async (event: React.FormEvent<HTMLFormElement>) => {
+      event.preventDefault();
+      event.stopPropagation();
+
+      if (!isChecked) return;
+      const isSuccess = await onSubmit(event);
+      if (isSuccess) {
+        window.location.href = '/southeast-asia/finished';
+      } else {
+        refetchSlots();
+        setStepType(StepType.SLOT_USED);
+        setTimeSlotValue('');
+        setIsSlotUsed(true);
+      }
+    },
+    [isChecked, onSubmit, refetchSlots, setTimeSlotValue],
+  );
+
   const { buttons, component: Step, setValue, title, value } = steps[stepType];
 
   const isSlotUsedStep = stepType === StepType.SLOT_USED;
   const isFinishStep =
     stepType === StepType.CONTACT ||
     (isSlotUsed && stepType === StepType.SCHEDULE);
+
+  const progressPercent =
+    ((stepType + 1) * 100) / (Object.keys(steps).length - 1);
 
   const onValueChange = useCallback(
     (value: string) => {
@@ -139,14 +169,12 @@ const Steps: FunctionComponent = ({}) => {
       setValue(value);
 
       if (stepType === StepType.HAS_LAPTOP && value === 'no') {
-        // onNoLaptop();
-        setStepType(FIRST_STEP);
+        window.location.href = '/southeast-asia/no-laptop';
         return;
       }
 
       setTimeout(() => nextStep(), BEFORE_MOVE_TO_NEXT_STEP_DELAY_MS);
     },
-    // [setValue, nextStep, stepType, onNoLaptop],
     [setValue, nextStep, stepType],
   );
 
@@ -162,9 +190,10 @@ const Steps: FunctionComponent = ({}) => {
   }, []);
 
   return (
-    <form>
+    <form onSubmit={submit}>
       <Wrapper>
         <Content>
+          <StyledH2>{title}</StyledH2>
           {buttons && Step && (
             <Step
               buttons={buttons}
@@ -172,7 +201,28 @@ const Steps: FunctionComponent = ({}) => {
               value={value}
             />
           )}
+          {isSlotUsedStep && (
+            <CenteredH2>
+              Oops! Jadwal sudah terisi. Silakan pilih jadwal lain 🙁
+            </CenteredH2>
+          )}
+          {stepType === StepType.SCHEDULE && (
+            <Schedule
+              groupedSlots={groupedSlots}
+              onValueChange={onValueChange}
+              value={value}
+            />
+          )}
+          {stepType === StepType.CONTACT && (
+            <Contact
+              childFirstNameState={[childFirstName, setChildFirstName]}
+              parentNameState={[parentName, setParentName]}
+              phoneState={[phone, setPhone]}
+              checkboxState={[isChecked, setIsChecked]}
+            />
+          )}
         </Content>
+        {!isSlotUsed && <ProgressBar percent={progressPercent} />}
         <ButtonsWrapper>
           {!isSlotUsed && (
             <Button

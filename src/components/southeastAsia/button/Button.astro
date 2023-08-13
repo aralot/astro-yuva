@@ -1,0 +1,45 @@
+---
+const { as, size, ...attributes } = Astro.props;
+const DEFAULT_SIZE = 'medium';
+attributes.class = size || DEFAULT_SIZE;
+---
+
+{ as === "link" ? (
+  <a {...attributes}><slot /></a>
+) : (
+  <button {...attributes}><slot /></button>
+)}
+
+<style>
+  button, a {
+    align-items: center;
+    background-color: rgb(131, 58, 224);
+    border-style: none;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+    display: inline-flex;
+    flex-shrink: 0;
+    font-family: 'Cera CY', Helvetica, Arial, sans-serif;
+    justify-content: center;
+    margin: 0px;
+    outline: none;
+    text-decoration: none;
+    transition: color 0.2s ease 0s, background-color;
+  }
+
+  .medium {
+    font-size: 16px;
+    line-height: 24px;
+    height: 36px;
+    padding: 0 20px;
+    border-radius: 10px;
+  }
+
+  .large {
+    font-size: 18px;
+    line-height: 24px;
+    height: 48px;
+    padding: 0 24px;
+    border-radius: 12px;
+  }
+</style>  

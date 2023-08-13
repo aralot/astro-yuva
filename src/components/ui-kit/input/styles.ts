@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components';
 
 import { p2ShortStyle, TagAndLabel, P3 } from '../typography';
 import { preloader } from '../preloader';
+import { Colors } from '../colors';
 
 import { InputSize } from './types';
 
@@ -17,8 +18,8 @@ export const styleInput = css<{
   width: 100%;
   padding: 8px;
 
-  background: ${({ theme }) => theme.palette.white};
-  border: 1px solid ${({ theme }) => theme.palette.divider_and_input_border};
+  background: ${({ theme }) => Colors.white};
+  border: 1px solid ${({ theme }) => Colors.divider_and_input_border};
 
   ${({ $size }) => {
     switch ($size) {
@@ -40,27 +41,27 @@ export const styleInput = css<{
   outline: none;
 
   &::placeholder {
-    color: ${({ theme }) => theme.palette.text_disabled};
+    color: ${({ theme }) => Colors.text_disabled};
   }
 
   &:hover {
-    border-color: ${({ theme }) => theme.palette.interactive_primary_hover};
+    border-color: ${({ theme }) => Colors.interactive_primary_hover};
   }
 
   &:focus {
-    border-color: ${({ theme }) => theme.palette.interactive_primary};
+    border-color: ${({ theme }) => Colors.interactive_primary};
   }
 
   &:disabled {
-    background: ${({ theme }) => theme.palette.interactive_disabled};
-    color: ${({ theme }) => theme.palette.text_disabled};
+    background: ${({ theme }) => Colors.interactive_disabled};
+    color: ${({ theme }) => Colors.text_disabled};
     pointer-events: none;
   }
 
   ${({ $hasError, theme }) =>
     $hasError &&
     css`
-      border-color: ${theme.palette.interactive_error} !important;
+      border-color: ${Colors.interactive_error} !important;
     `}
 
   ${({ type }) =>
@@ -81,7 +82,7 @@ export const Label = styled(TagAndLabel)<{ disabled?: boolean }>`
   ${({ disabled, theme }) =>
     disabled &&
     css`
-      color: ${theme.palette.text_secondary};
+      color: ${Colors.text_secondary};
     `}
 `;
 
@@ -95,13 +96,13 @@ const bottomLabelStyles = css`
 export const Error = styled(P3)`
   ${bottomLabelStyles};
 
-  color: ${({ theme }) => theme.palette.interactive_error};
+  color: ${({ theme }) => Colors.interactive_error};
 `;
 
 export const Loading = styled(P3)`
   ${bottomLabelStyles};
 
-  color: ${({ theme }) => theme.palette.text_secondary};
+  color: ${({ theme }) => Colors.text_secondary};
 
   &:before {
     content: '';

@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useCallback } from 'react';
 import ym from 'react-yandex-metrika';
 
-import { Checkbox, Link, P3 } from '@algoritmika_org/ui-kit';
+import { Checkbox, Link, P3 } from '../../../ui-kit';
 
 import { StyledInput, StyledPhoneInput, Subheader } from './styles';
 import { IContactProps } from './types';

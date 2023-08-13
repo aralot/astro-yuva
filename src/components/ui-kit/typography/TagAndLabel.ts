@@ -1,5 +1,7 @@
 import styled, { css } from 'styled-components';
 
+import { Colors } from '../colors';
+
 export const tagAndLabelStyle = css`
   font-style: normal;
   font-weight: normal;
@@ -7,7 +9,7 @@ export const tagAndLabelStyle = css`
   line-height: 18px;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: ${({ theme }) => theme.palette.black_pearl};
+  color: ${Colors.black_pearl};
 `;
 
 export const TagAndLabel = styled.span`

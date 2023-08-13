@@ -4,7 +4,7 @@ import {
   Button as UIKitButton,
   ButtonKind,
   ButtonSize,
-} from '../../../ui-kit/button';
+} from '../../../../ui-kit/button';
 
 import { IButtonProps } from './types';
 
