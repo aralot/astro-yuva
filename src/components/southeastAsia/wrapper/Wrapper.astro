@@ -1,11 +1,15 @@
 ---
+import Icon from 'astro-icon';
+
 import Layout from '../../../layouts/Layout.astro';
 ---
 
 <Layout title="Jawablah beberapa pertanyaan dan dapatkan kelas coding gratis untuk anak Anda">
   <div class="container">
     <div class="content">
-      <div class="logo"></div>
+      <div class="logo">
+        <Icon name="logo" />
+      </div>
       <div class="about">
         <slot />
       </div>
@@ -14,6 +18,13 @@ import Layout from '../../../layouts/Layout.astro';
 </Layout>
 
 <style>
+  [astro-icon] {
+     height: 33px;
+     position: relative;
+     top: 25px;
+     width: 132px;
+  }
+
   .container {
     position: relative;
     height: 100%;
@@ -67,7 +78,6 @@ import Layout from '../../../layouts/Layout.astro';
   .logo {
     height: 58px;
     color: #602b7a;
-    padding-top: 25px;
     padding-left: 20px;
 
     @media (min-width: 75em) {
@@ -88,44 +98,36 @@ import Layout from '../../../layouts/Layout.astro';
         background: rgb(96, 43, 122);
         transform: rotate(34.34deg);
       }
-
-      &:after {
-        content: "";
-        display: block;
-        width: 132px;
-        height: 33px;
-        background: url(/logo.svg) no-repeat;
-        position: relative;
-        top: 25px;
-      }
     }
 
   }
 
   .about {
     margin: auto 0px;
-    max-width: 364px;
-    padding: 162px 0px 0px;
+    padding: 0 20px;
+
+    @media (min-width: 75em) {
+      max-width: 364px;
+      padding: 162px 0px 0px;
+    }
   }
 
   .title {
-    margin-bottom: 12px;
-    width: 517px;
-    font-size: 48px;
-    line-height: 52px;
+    margin-bottom: 16px;
     font-weight: 700;
+    font-size: 24px;
+    line-height: 30px;
+
+    @media (min-width: 75em) {
+      margin-bottom: 12px;
+      width: 517px;
+
+      font-size: 48px;
+      line-height: 52px;
+    }
   }
 
   .description {
     padding-bottom: 24px;
-  }
-
-  p {
-    margin: 0px;
-    color: rgb(15, 28, 44);
-    font-family: "Cera CY", Helvetica, Arial, sans-serif;
-    font-size: 18px;
-    line-height: 24px;
-    padding-bottom: 8px;
   }
 </style>

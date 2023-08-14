@@ -5,7 +5,7 @@ import {
   fetchBaseQuery,
   ApiProvider,
 } from '@reduxjs/toolkit/query/react';
-// import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
+import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 import ym from 'react-yandex-metrika';
 
 // import { getCookieByName } from '@algoritmika_org/utils';
@@ -215,7 +215,7 @@ export function useForm({
     return slots;
   }, [data, getDateRangeLabel]);
 
-  //   const { executeRecaptcha } = useGoogleReCaptcha();
+  const { executeRecaptcha } = useGoogleReCaptcha();
 
   const [createOnlineBookingMutation, { isSuccess }] =
     api.useCreateOnlineBookingMutation();
@@ -233,16 +233,12 @@ export function useForm({
 
       let isSuccess = false;
 
-      console.log('SUBMIT');
-
-      //       if (!executeRecaptcha) return isSuccess;
+      if (!executeRecaptcha) return isSuccess;
 
       setIsPending(true);
 
       try {
-        // @hardcode
-        // const reCaptchaToken = await executeRecaptcha('online_booking');
-        const reCaptchaToken = 'true';
+        const reCaptchaToken = await executeRecaptcha('online_booking');
         if (reCaptchaToken) {
           let crmPipeline = 'pipeline__autobooking_mini';
           let crmStatus =
@@ -320,7 +316,7 @@ export function useForm({
       childFirstName,
       childLastName,
       email,
-      //      executeRecaptcha,
+      executeRecaptcha,
       isFooter,
       isLight,
       //      openPopup,

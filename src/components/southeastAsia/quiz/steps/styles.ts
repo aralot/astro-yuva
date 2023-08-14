@@ -3,7 +3,9 @@ import styled, { css } from 'styled-components';
 import { H2, P2Short, Input, PhoneInput } from '../../../ui-kit';
 
 export const Wrapper = styled.div`
-  width: 390px;
+  @media (min-width: 75em) {
+    width: 390px;
+  }
 `;
 
 export const Content = styled.div`

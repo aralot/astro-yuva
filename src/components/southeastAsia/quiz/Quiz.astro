@@ -53,18 +53,34 @@ import Steps from './steps';
   }
 
   .popup-wrapper {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    padding: 28px 28px 32px;
-    width: max-content;
     background: rgb(255, 255, 255);
     box-shadow: rgba(0, 0, 0, 0.2) 0px 20px 28px -8px;
-    border-radius: 12px;
-    z-index: 6000;
+    display: flex;
+    flex-direction: column;
     margin: auto;
     opacity: 1;
     transform: translateY(0px);
-    transition: all 0.3s cubic-bezier(0.5, 0, 0.7, 1) 0s; 
+    transition: transform 0.3s cubic-bezier(0.5, 0, 0.7, 1) 0s; 
+    z-index: 6000;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    border-radius: 12px 12px 0 0;
+
+    @media (min-width: 75em) {
+      border-radius: 12px;
+      position: relative;
+      width: max-content;
+      padding: 28px 28px 32px;
+    }
+  }
+
+  .popup-content {
+    padding: 16px 16px 32px;
+
+    @media (min-width: 75em) {
+      padding: 0;
+    }
   }
 </style>

@@ -11,7 +11,7 @@ const { title } = Astro.props;
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="description" content="Astro description">
-		<meta name="viewport" content="width=device-width" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
     <title>{title}</title>
@@ -42,5 +42,9 @@ const { title } = Astro.props;
     height: 100%;
     margin: 0;
     font-family: 'Cera CY', Helvetica, Arial, sans-serif;
+  }
+
+  .grecaptcha-badge {
+    display: none;
   }
 </style>
