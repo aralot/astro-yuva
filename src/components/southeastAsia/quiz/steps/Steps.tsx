@@ -11,7 +11,7 @@ import ProgressBar from './progressBar';
 
 import { BRANCH_CODE_INDONESIA, useForm } from './useForm';
 import { LOCALE, TIME_ZONE, StepsCollection, StepType } from './types';
-import { Wrapper, Content, ButtonsWrapper, StyledH2 } from './styles';
+import { Form, Content, ButtonsWrapper, StyledH2 } from './styles';
 
 const BEFORE_MOVE_TO_NEXT_STEP_DELAY_MS = 200;
 const FIRST_STEP = StepType.HOBBY;
@@ -190,66 +190,60 @@ const Steps: FunctionComponent = ({}) => {
   }, []);
 
   return (
-    <form onSubmit={submit}>
-      <Wrapper>
-        <Content>
-          <StyledH2>{title}</StyledH2>
-          {buttons && Step && (
-            <Step
-              buttons={buttons}
-              onValueChange={onValueChange}
-              value={value}
-            />
-          )}
-          {isSlotUsedStep && (
-            <CenteredH2>
-              Oops! Jadwal sudah terisi. Silakan pilih jadwal lain 🙁
-            </CenteredH2>
-          )}
-          {stepType === StepType.SCHEDULE && (
-            <Schedule
-              groupedSlots={groupedSlots}
-              onValueChange={onValueChange}
-              value={value}
-            />
-          )}
-          {stepType === StepType.CONTACT && (
-            <Contact
-              childFirstNameState={[childFirstName, setChildFirstName]}
-              parentNameState={[parentName, setParentName]}
-              phoneState={[phone, setPhone]}
-              checkboxState={[isChecked, setIsChecked]}
-            />
-          )}
-        </Content>
-        {!isSlotUsed && <ProgressBar percent={progressPercent} />}
-        <ButtonsWrapper>
-          {!isSlotUsed && (
-            <Button
-              onClick={prevStep}
-              kind={ButtonKind.TECHNICAL}
-              disabled={stepType === StepType.HOBBY || isPending}
-              type="button"
-            >
-              Back
-            </Button>
-          )}
+    <Form onSubmit={submit}>
+      <Content>
+        <StyledH2>{title}</StyledH2>
+        {buttons && Step && (
+          <Step buttons={buttons} onValueChange={onValueChange} value={value} />
+        )}
+        {isSlotUsedStep && (
+          <CenteredH2>
+            Oops! Jadwal sudah terisi. Silakan pilih jadwal lain 🙁
+          </CenteredH2>
+        )}
+        {stepType === StepType.SCHEDULE && (
+          <Schedule
+            groupedSlots={groupedSlots}
+            onValueChange={onValueChange}
+            value={value}
+          />
+        )}
+        {stepType === StepType.CONTACT && (
+          <Contact
+            childFirstNameState={[childFirstName, setChildFirstName]}
+            parentNameState={[parentName, setParentName]}
+            phoneState={[phone, setPhone]}
+            checkboxState={[isChecked, setIsChecked]}
+          />
+        )}
+      </Content>
+      {!isSlotUsed && <ProgressBar percent={progressPercent} />}
+      <ButtonsWrapper>
+        {!isSlotUsed && (
           <Button
-            onClick={
-              isSlotUsedStep
-                ? goToScheduleStep
-                : isFinishStep
-                ? undefined
-                : nextStep
-            }
-            disabled={!getIsNextActive() || isPending}
-            type={isFinishStep ? 'submit' : 'button'}
+            onClick={prevStep}
+            kind={ButtonKind.TECHNICAL}
+            disabled={stepType === StepType.HOBBY || isPending}
+            type="button"
           >
-            {isSlotUsedStep ? 'Kembali' : isFinishStep ? 'Kirim' : 'Next'}
+            Back
           </Button>
-        </ButtonsWrapper>
-      </Wrapper>
-    </form>
+        )}
+        <Button
+          onClick={
+            isSlotUsedStep
+              ? goToScheduleStep
+              : isFinishStep
+              ? undefined
+              : nextStep
+          }
+          disabled={!getIsNextActive() || isPending}
+          type={isFinishStep ? 'submit' : 'button'}
+        >
+          {isSlotUsedStep ? 'Kembali' : isFinishStep ? 'Kirim' : 'Next'}
+        </Button>
+      </ButtonsWrapper>
+    </Form>
   );
 };
 

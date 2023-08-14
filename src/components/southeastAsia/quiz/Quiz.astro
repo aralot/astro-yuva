@@ -52,23 +52,24 @@ import Steps from './steps';
 
   .popup-wrapper {
     background: rgb(255, 255, 255);
+    border-radius: 12px 12px 0 0;
+    bottom: 0;
     box-shadow: rgba(0, 0, 0, 0.2) 0px 20px 28px -8px;
     display: flex;
     flex-direction: column;
+    left: 0;
     margin: auto;
+    position: fixed;
+    top: 24px;
     transform: translateY(100%);
     transition: transform 0.3s cubic-bezier(0.5, 0, 0.7, 1) 0s; 
-    position: fixed;
-    left: 0;
-    bottom: 0;
     width: 100%;
-    border-radius: 12px 12px 0 0;
 
     @media (min-width: 75em) {
       border-radius: 12px;
       position: relative;
       width: max-content;
-      padding: 28px 28px 32px;
+      padding: 28px 28px 16px;
       transform: translateY(0);
       display: none;
     }
@@ -88,8 +89,8 @@ import Steps from './steps';
   }
 
   .popup-content {
-    padding: 16px 16px 32px;
-    min-height: 372px;
+    padding: 24px 16px 16px;
+    flex-grow: 1;
 
     @media (min-width: 75em) {
       padding: 0;

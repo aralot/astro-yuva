@@ -2,8 +2,14 @@ import styled, { css } from 'styled-components';
 
 import { H2, P2Short, Input, PhoneInput } from '../../../ui-kit';
 
-export const Wrapper = styled.div`
+export const Form = styled.form`
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
   @media (min-width: 75em) {
+    min-height: initial;
     width: 390px;
   }
 `;
@@ -15,6 +21,7 @@ export const Content = styled.div`
 
   @media (min-width: 75em) {
     min-height: 457px;
+    padding-bottom: 0;
   }
 `;
 
@@ -29,7 +36,11 @@ export const ButtonsWrapper = styled.div`
 `;
 
 export const StyledH2 = styled(H2)`
-  margin-bottom: 24px;
+  margin-bottom: 16px;
+
+  @media (min-width: 75em) {
+    margin-bottom: 24px;
+  }
 `;
 
 export const CenteredH2 = styled(H2)`
