@@ -33,17 +33,18 @@ export const Input: FunctionComponent<IInputProps> = ({
         $size={inputSize}
       />
 
-      {/* @hardcode
       {error && (
         <Error>
+          {/* @hardcode
           <Icon
             content={Icons.small.attention}
             color={theme.palette.interactive_error}
           />
+          */}
+
           {error}
         </Error>
       )}
-      */}
 
       {loading && <Loading>{loading}</Loading>}
     </div>
