@@ -12,6 +12,10 @@ export const Content = styled.div`
   display: flex;
   flex-direction: column;
   padding-bottom: 16px;
+
+  @media (min-width: 75em) {
+    min-height: 457px;
+  }
 `;
 
 export const ButtonsWrapper = styled.div`
