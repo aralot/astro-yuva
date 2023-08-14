@@ -10,7 +10,7 @@ export const Wrapper = styled.div`
   right: 0;
   bottom: 74px;
 
-  @media (min-width: 75em) {
+  @media (min-width: 1200px) {
     bottom: 90px;
   }
 `;

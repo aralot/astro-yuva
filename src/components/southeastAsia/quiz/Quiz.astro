@@ -31,7 +31,7 @@ import Steps from './steps';
     }
   });
 
-  if (window.matchMedia("(min-width: 75em)").matches) {
+  if (window.matchMedia("(min-width: 1200px)").matches) {
     popupBackdrop.appendChild(popupWrapper);
   };
 </script> 
@@ -65,7 +65,7 @@ import Steps from './steps';
     transition: transform 0.3s cubic-bezier(0.5, 0, 0.7, 1) 0s; 
     width: 100%;
 
-    @media (min-width: 75em) {
+    @media (min-width: 1200px) {
       border-radius: 12px;
       position: relative;
       width: max-content;
@@ -83,7 +83,7 @@ import Steps from './steps';
   .is-visible .popup-wrapper {
     transform: translateY(0);
 
-    @media (min-width: 75em) {
+    @media (min-width: 1200px) {
       display: flex;
     }
   }
@@ -92,7 +92,7 @@ import Steps from './steps';
     padding: 24px 16px 16px;
     flex-grow: 1;
 
-    @media (min-width: 75em) {
+    @media (min-width: 1200px) {
       padding: 0;
       min-width: 390px;
       min-height: 533px;

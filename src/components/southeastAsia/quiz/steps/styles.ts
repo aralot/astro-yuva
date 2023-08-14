@@ -8,7 +8,7 @@ export const Form = styled.form`
   flex-direction: column;
   justify-content: space-between;
 
-  @media (min-width: 75em) {
+  @media (min-width: 1200px) {
     min-height: initial;
     width: 390px;
   }
@@ -19,7 +19,7 @@ export const Content = styled.div`
   flex-direction: column;
   padding-bottom: 16px;
 
-  @media (min-width: 75em) {
+  @media (min-width: 1200px) {
     min-height: 457px;
     padding-bottom: 0;
   }
@@ -38,7 +38,7 @@ export const ButtonsWrapper = styled.div`
 export const StyledH2 = styled(H2)`
   margin-bottom: 16px;
 
-  @media (min-width: 75em) {
+  @media (min-width: 1200px) {
     margin-bottom: 24px;
   }
 `;
