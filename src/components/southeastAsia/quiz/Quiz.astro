@@ -1,4 +1,6 @@
 ---
+import Icon from 'astro-icon';
+
 import Button from '../button';
 import Steps from './steps';
 ---
@@ -6,7 +8,9 @@ import Steps from './steps';
 <div>
   <Button id="button" style="width: 341px" size="large">Mulai</Button>
   <div id="popup" class="popup">
-    <div id="popup-backdrop" class="popup-backdrop"></div>
+    <div id="popup-backdrop" class="popup-backdrop">
+      <button id="popup-close" class="popup-close"><Icon name="close" /></button>
+    </div>
     <div id="popup-wrapper" class="popup-wrapper">
       <div class="popup-content">
         <Steps client:only="react" />
@@ -20,6 +24,7 @@ import Steps from './steps';
   const popup = document.getElementById('popup');
   const popupBackdrop = document.getElementById('popup-backdrop');
   const popupWrapper = document.getElementById('popup-wrapper');
+  const popupClose = document.getElementById('popup-close');
 
   button.addEventListener('click', () => {
     popup.classList.add('is-visible');
@@ -31,12 +36,46 @@ import Steps from './steps';
     }
   });
 
+  popupClose.addEventListener('click', (event) => {
+    popup.classList.remove('is-visible');
+  });
+
   if (window.matchMedia("(min-width: 1200px)").matches) {
     popupBackdrop.appendChild(popupWrapper);
+  } else {
+    popupWrapper.appendChild(popupClose);
   };
+
+  document.addEventListener('keydown', (event) => {
+    if (event.keyCode === 27) {
+      popup.classList.remove('is-visible');
+    }
+  });
 </script> 
 
 <style>
+  .popup-close {
+    background: none;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    height: 24px;
+    padding: 0;
+    right: 16px;
+    top: 24px;
+    width: 24px;
+    z-index: 1;
+
+    @media (min-width: 1200px) {
+      color: white;
+      height: 76px;
+      padding: 20px;
+      right: 0px;
+      top: 0px;
+      width: 76px;
+    }
+  }
+
   .popup-backdrop {
     align-items: center;
     background-color: rgba(0, 0, 0, 0.3);
