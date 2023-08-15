@@ -1,0 +1,36 @@
+---
+import { Icon } from 'astro-icon';
+
+import Button from '../button';
+---
+
+<div class="social-buttons">
+  <Button
+    as="link" 
+    href="https://www.instagram.com/algorithmics_indonesia"
+    target="_blank"
+    rel="noopener noreferrer"
+    style="flex-grow: 1"
+  ><Icon name="instagram" />Instagram</Button>
+  <Button
+    as="link" 
+    href="https://www.facebook.com/algoritmika.indonesia"
+    target="_blank"
+    rel="noopener noreferrer"
+    style="flex-grow: 1"
+  ><Icon name="facebook" />Facebook</Button>
+</div>
+
+<style>
+  [astro-icon="instagram"],
+  [astro-icon="facebook"] {
+    width: 24px;
+    height: 24px;
+    padding-right: 8px;
+  }
+
+  .social-buttons {
+    display: flex;
+    column-gap: 8px;
+  }
+</style>

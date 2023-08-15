@@ -15,7 +15,7 @@ export const styleInput = css<{
   ${p2ShortStyle};
 
   display: block;
-  width: 100%;
+  width: calc(100% - 16px);
   padding: 8px;
 
   background: ${({ theme }) => Colors.white};
@@ -32,7 +32,7 @@ export const styleInput = css<{
       case InputSize.SMALL:
       default:
         return css`
-          height: 36px;
+          height: 20px;
           border-radius: 10px;
         `;
     }

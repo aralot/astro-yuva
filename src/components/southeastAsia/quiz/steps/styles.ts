@@ -31,7 +31,7 @@ export const ButtonsWrapper = styled.div`
   padding-top: 24px;
 
   & > button {
-    flex-grow: 1;
+    width: calc(50% - 5px);
   }
 `;
 
