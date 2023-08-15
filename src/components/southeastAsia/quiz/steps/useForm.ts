@@ -8,14 +8,6 @@ import {
 import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 import ym from 'react-yandex-metrika';
 
-// import { getCookieByName } from '@algoritmika_org/utils';
-
-// import {
-//   useCreateOnlineBookingMutation,
-//   useGetOnlineBookingListQuery,
-// } from 'store/api/onlineBooking';
-// import { ICreateOnlineBookingParams } from 'store/api/onlineBooking/types';
-
 const BRANCH_CODE = 'OSA-autobooking';
 export const BRANCH_CODE_INDONESIA = 'Indonesia-autobooking';
 export const CALLBACK = 'callback';
@@ -37,10 +29,7 @@ const getCookieByName = (name: string) => {
 
 export const api = createApi({
   baseQuery: fetchBaseQuery({
-    // @hardcode @temporary
-    // baseUrl: '/api/v2',
-    // baseUrl: 'http://learn.algo.loc/api/v2',
-    baseUrl: 'https://temp-try-to-disable-cors.dev.alg.team/api/v2',
+    baseUrl: '/api/v2',
   }),
   endpoints: builder => ({
     createOnlineBooking: builder.mutation({
@@ -61,94 +50,6 @@ export const api = createApi({
         url: 'online-booking/list',
       }),
       transformResponse: result => result.data,
-      // @hardcode
-      //       transformResponse: result => {
-      //         const hardcodeData = {
-      //           status: 'success',
-      //           data: {
-      //             items: [
-      //               {
-      //                 groupTitle: 'MK 12.08.2023 09.00-10.00 OB',
-      //                 groupStartTime: '2023-08-12T09:00:00+07:00',
-      //               },
-      //               {
-      //                 groupTitle: 'MK 12.08.2023 10.00-11.00 Shinta',
-      //                 groupStartTime: '2023-08-12T10:00:00+07:00',
-      //               },
-      //               {
-      //                 groupTitle: 'MK 12.08.2023 12.00-13.00 Juan',
-      //                 groupStartTime: '2023-08-12T12:00:00+07:00',
-      //               },
-      //               {
-      //                 groupTitle: 'MK 12.08.2023 13.00-14.00 Nana',
-      //                 groupStartTime: '2023-08-12T13:00:00+07:00',
-      //               },
-      //               {
-      //                 groupTitle: 'MK 12.08.2023 15.00-16.00 Harvey',
-      //                 groupStartTime: '2023-08-12T15:00:00+07:00',
-      //               },
-      //               {
-      //                 groupTitle: 'MK 12.08.2023 17.00-18.00 OB',
-      //                 groupStartTime: '2023-08-12T17:00:00+07:00',
-      //               },
-      //               {
-      //                 groupTitle: 'MK 12.08.2023 19.00-20.00 OB',
-      //                 groupStartTime: '2023-08-12T19:00:00+07:00',
-      //               },
-      //               {
-      //                 groupTitle: 'MK 12.08.2023 20.00-21.00 Tia',
-      //                 groupStartTime: '2023-08-12T20:00:00+07:00',
-      //               },
-      //               {
-      //                 groupTitle: 'MK 13.08.2023 09.00-10.00 Nana',
-      //                 groupStartTime: '2023-08-13T09:00:00+07:00',
-      //               },
-      //               {
-      //                 groupTitle: 'MK 13.08.2023 10.00-11.00 Juan',
-      //                 groupStartTime: '2023-08-13T10:00:00+07:00',
-      //               },
-      //               {
-      //                 groupTitle: 'MK 13.08.2023 12.00-13.00 Shinta',
-      //                 groupStartTime: '2023-08-13T12:00:00+07:00',
-      //               },
-      //               {
-      //                 groupTitle: 'MK 13.08.2023 13.00-14.00 OB',
-      //                 groupStartTime: '2023-08-13T13:00:00+07:00',
-      //               },
-      //               {
-      //                 groupTitle: 'MK 13.08.2023 14.00-15.00 Juan',
-      //                 groupStartTime: '2023-08-13T14:00:00+07:00',
-      //               },
-      //               {
-      //                 groupTitle: 'MK 13.08.2023 15.00-16.00 Nana',
-      //                 groupStartTime: '2023-08-13T15:00:00+07:00',
-      //               },
-      //               {
-      //                 groupTitle: 'MK 13.08.2023 16.00-17.00 Tia',
-      //                 groupStartTime: '2023-08-13T16:00:00+07:00',
-      //               },
-      //               {
-      //                 groupTitle: 'MK 13.08.2023 17.00-18.00 OB',
-      //                 groupStartTime: '2023-08-13T17:00:00+07:00',
-      //               },
-      //               {
-      //                 groupTitle: 'MK 13.08.2023 19.00-20.00 Harvey',
-      //                 groupStartTime: '2023-08-13T19:00:00+07:00',
-      //               },
-      //               {
-      //                 groupTitle: 'MK 13.08.2023 20.00-21.00 OB',
-      //                 groupStartTime: '2023-08-13T20:00:00+07:00',
-      //               },
-      //               {
-      //                 groupTitle: 'MK 13.08.2023 21.00-22.00 Fajri',
-      //                 groupStartTime: '2023-08-13T21:00:00+07:00',
-      //               },
-      //             ],
-      //           },
-      //         };
-      //         return hardcodeData.data;
-      //},
-      // END OF HARDCODE
     }),
   }),
 });
