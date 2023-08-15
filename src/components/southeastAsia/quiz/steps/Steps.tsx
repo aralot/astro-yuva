@@ -141,7 +141,7 @@ const Steps: FunctionComponent = ({}) => {
       if (!isChecked) return;
       const isSuccess = await onSubmit(event);
       if (isSuccess) {
-        window.location.href = '/southeast-asia/finished';
+        window.location.href = '/finished';
       } else {
         refetchSlots();
         setStepType(StepType.SLOT_USED);
@@ -169,7 +169,7 @@ const Steps: FunctionComponent = ({}) => {
       setValue(value);
 
       if (stepType === StepType.HAS_LAPTOP && value === 'no') {
-        window.location.href = '/southeast-asia/no-laptop';
+        window.location.href = '/no-laptop';
         return;
       }
 
