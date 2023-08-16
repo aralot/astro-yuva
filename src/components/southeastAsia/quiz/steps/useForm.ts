@@ -29,9 +29,7 @@ const getCookieByName = (name: string) => {
 
 export const api = createApi({
   baseQuery: fetchBaseQuery({
-    // @hardcode
-    // baseUrl: '/api/v2',
-    baseUrl: 'https://temp-try-to-disable-cors.dev.alg.team/api/v2',
+    baseUrl: '/api/v2',
   }),
   endpoints: builder => ({
     createOnlineBooking: builder.mutation({
