@@ -1,0 +1,54 @@
+---
+import {
+  Description,
+  Item,
+  Quiz,
+  Title,
+  Wrapper,
+} from '../components/southeastAsia';
+---
+
+<Wrapper>
+  <Title>
+    Dapatkan pelajaran pemrograman gratis untuk anak Anda dalam 4 langkah
+  </Title>
+  <Description>
+    <Item>👦🏽 Untuk anak usia 5-17 tahun</Item>
+    <Item>🖥️ Membuat proyek IT kecil pertamanya</Item>
+    <Item>🥇 Membahas pengalaman dan hobi anak</Item>
+  </Description>
+  <Quiz />
+</Wrapper>
+
+<script>
+  /* Google Tag Manager */
+
+  var GOOGLE_TAG_MANAGER_ID = 'GTM-KR42WGP';
+
+  (function (w, d, s, l, i) {
+    w[l] = w[l] || [];
+    w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+    var f = d.getElementsByTagName(s)[0],
+      j = d.createElement(s),
+      dl = l != 'dataLayer' ? '&l=' + l : '';
+    j.async = true;
+    j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+    f.parentNode.insertBefore(j, f);
+  })(window, document, 'script', 'dataLayer', GOOGLE_TAG_MANAGER_ID);
+
+  window.dataLayer = window.dataLayer || [];
+
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+
+  gtag('js', new Date());
+  window.addEventListener(
+    'submit',
+    function () {
+      dataLayer.push({ event: 'form_submit' });
+    },
+    true,
+  );
+  /* End Google Tag Manager */
+</script>
