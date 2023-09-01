@@ -196,10 +196,8 @@ export function useForm({
             ym('reachGoal', 'submit_form');
           }
 
+          console.log(payload, 'payload');
           await createOnlineBookingMutation(payload).unwrap();
-          // @hardcode
-          // const sleep = () => new Promise(resolve => setTimeout(resolve, 3000));
-          // await sleep();
           isSuccess = true;
         }
       } catch (e) {
