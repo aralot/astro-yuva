@@ -1,5 +1,6 @@
 import React, { FunctionComponent } from 'react';
-import ym from 'react-yandex-metrika';
+
+import { reachGoal } from '../../yandexMetrikaWrapper';
 
 import Button from './button';
 
@@ -19,13 +20,11 @@ const HasLaptop: FunctionComponent<IStepProps> = ({ onValueChange, value }) => {
       {buttonsData.map(({ title, value }) => (
         <Button
           onClick={event => {
-            // @hardcode
-            // ym(
-            //   'reachGoal',
-            //   value === 'yes'
-            //     ? 'pc_yes_newautobooking'
-            //     : 'pc_no_newautobooking',
-            // );
+            reachGoal(
+              value === 'yes'
+                ? 'pc_yes_newautobooking'
+                : 'pc_no_newautobooking',
+            );
             onValueChange(event);
           }}
           key={value}

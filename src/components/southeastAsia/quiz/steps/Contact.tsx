@@ -1,7 +1,8 @@
 import React, { FunctionComponent, useCallback } from 'react';
-import ym from 'react-yandex-metrika';
 
 import { Checkbox, Link, P3 } from '../../../ui-kit';
+
+import { reachGoal } from '../../yandexMetrikaWrapper';
 
 import { StyledInput, StyledPhoneInput, Subheader } from './styles';
 import { IContactProps } from './types';
@@ -55,7 +56,7 @@ const Contact: FunctionComponent<IContactProps> = ({
           onChange={e => setChildFirstName(e.target.value)}
           onInput={validateInput}
           onFocus={event => {
-            ym('reachGoal', 'childs_name_newautobooking');
+            reachGoal('childs_name_newautobooking');
             validateInput(event);
           }}
           placeholder="Name"
@@ -68,7 +69,7 @@ const Contact: FunctionComponent<IContactProps> = ({
           placeholder="Name"
           onInput={validateInput}
           onFocus={event => {
-            ym('reachGoal', 'parents_name_newautobooking');
+            reachGoal('parents_name_newautobooking');
             validateInput(event);
           }}
           value={parentName}
@@ -79,7 +80,7 @@ const Contact: FunctionComponent<IContactProps> = ({
           label="Masukkan nomor telepon anda"
           onChange={setPhone}
           onInput={onPhoneInput}
-          onFocus={() => ym('reachGoal', 'contact_phone_newautobooking')}
+          onFocus={() => reachGoal('contact_phone_newautobooking')}
           placeholder="+62 (999) 999-99-9999"
           value={phone}
         />

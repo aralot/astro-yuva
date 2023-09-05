@@ -1,5 +1,6 @@
 import React, { FunctionComponent } from 'react';
-import ym from 'react-yandex-metrika';
+
+import { reachGoal } from '../../yandexMetrikaWrapper';
 
 import Button from './button';
 
@@ -20,8 +21,7 @@ const Age: FunctionComponent<IStepProps> = ({
       {buttons.map(({ value }) => (
         <Button
           onClick={event => {
-            // @hardcode
-            // ym('reachGoal', 'age_newautobooking');
+            reachGoal('age_newautobooking');
             onValueChange(event);
           }}
           key={'childAge' + value}

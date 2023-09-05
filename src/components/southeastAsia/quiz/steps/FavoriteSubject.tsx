@@ -1,5 +1,6 @@
 import React, { FunctionComponent } from 'react';
-import ym from 'react-yandex-metrika';
+
+import { reachGoal } from '../../yandexMetrikaWrapper';
 
 import Button from './button';
 
@@ -20,8 +21,7 @@ const FavoriteSubject: FunctionComponent<IStepProps> = ({
           key={value}
           value={value}
           onClick={event => {
-            // @hardcode
-            // ym('reachGoal', 'favorite_newautobooking');
+            reachGoal('favorite_newautobooking');
             onValueChange(event);
           }}
         >

@@ -4,7 +4,8 @@ import React, {
   useMemo,
   useLayoutEffect,
 } from 'react';
-import ym from 'react-yandex-metrika';
+
+import { reachGoal } from '../../yandexMetrikaWrapper';
 
 import { getDateRangeLabel } from './Steps';
 
@@ -96,8 +97,7 @@ const Schedule: FunctionComponent<IScheduleProps> = ({
           {timeSlots.map(({ title, value }) => (
             <Button
               onClick={event => {
-                // @hardcode
-                // ym('reachGoal', 'date_time_newautobooking');
+                reachGoal('date_time_newautobooking');
                 onValueChange(event);
               }}
               key={value}

@@ -6,7 +6,8 @@ import {
   ApiProvider,
 } from '@reduxjs/toolkit/query/react';
 import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
-import ym from 'react-yandex-metrika';
+
+import { reachGoal } from '../../yandexMetrikaWrapper';
 
 const BRANCH_CODE = 'OSA-autobooking';
 export const BRANCH_CODE_INDONESIA = 'Indonesia-autobooking';
@@ -184,16 +185,16 @@ export function useForm({
           }
 
           if (branchCode === BRANCH_CODE_INDONESIA) {
-            ym('reachGoal', 'contact_send_newautobooking');
+            reachGoal('contact_send_newautobooking');
           } else {
             if (isFooter) {
-              ym('reachGoal', 'submit_footerform');
+              reachGoal('submit_footerform');
             } else if (isLight === undefined) {
-              ym('reachGoal', 'submit_headform');
+              reachGoal('submit_headform');
             } else {
-              ym('reachGoal', isLight ? 'submit_whiteform' : 'submit_darkform');
+              reachGoal(isLight ? 'submit_whiteform' : 'submit_darkform');
             }
-            ym('reachGoal', 'submit_form');
+            reachGoal('submit_form');
           }
 
           console.log(payload, 'payload');
