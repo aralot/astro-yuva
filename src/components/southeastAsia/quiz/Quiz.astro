@@ -9,7 +9,8 @@ import Steps from './steps';
   <Button id="button" style="width: 341px" size="large">Mulai</Button>
   <div id="popup" class="popup">
     <div id="popup-backdrop" class="popup-backdrop">
-      <button id="popup-close" class="popup-close"><Icon name="close" /></button>
+      <button id="popup-close" class="popup-close"><Icon name="close" /></button
+      >
     </div>
     <div id="popup-wrapper" class="popup-wrapper">
       <div class="popup-content">
@@ -30,30 +31,30 @@ import Steps from './steps';
     popup.classList.add('is-visible');
   });
 
-  popupBackdrop.addEventListener('click', (event) => {
+  popupBackdrop.addEventListener('click', event => {
     if (event.target === event.currentTarget) {
       popup.classList.remove('is-visible');
     }
   });
 
-  popupClose.addEventListener('click', (event) => {
+  popupClose.addEventListener('click', event => {
     popup.classList.remove('is-visible');
   });
 
-  if (window.matchMedia("(min-width: 1200px)").matches) {
+  if (window.matchMedia('(min-width: 1200px)').matches) {
     popupBackdrop.appendChild(popupWrapper);
   } else {
     popupWrapper.appendChild(popupClose);
-  };
+  }
 
-  document.addEventListener('keydown', (event) => {
+  document.addEventListener('keydown', event => {
     if (event.keyCode === 27) {
       popup.classList.remove('is-visible');
     }
   });
-</script> 
+</script>
 
-<style>
+<style lang="scss">
   .popup-close {
     background: none;
     border: none;
@@ -101,7 +102,7 @@ import Steps from './steps';
     position: fixed;
     top: 24px;
     transform: translateY(100%);
-    transition: transform 0.3s cubic-bezier(0.5, 0, 0.7, 1) 0s; 
+    transition: transform 0.3s cubic-bezier(0.5, 0, 0.7, 1) 0s;
     width: 100%;
 
     @media (min-width: 1200px) {
@@ -116,7 +117,7 @@ import Steps from './steps';
 
   .is-visible .popup-backdrop {
     display: flex;
-    opacity: 1; 
+    opacity: 1;
   }
 
   .is-visible .popup-wrapper {

@@ -4,14 +4,21 @@ const DEFAULT_SIZE = 'medium';
 attributes.class = size || DEFAULT_SIZE;
 ---
 
-{ as === "link" ? (
-  <a {...attributes}><slot /></a>
-) : (
-  <button {...attributes}><slot /></button>
-)}
+{
+  as === 'link' ? (
+    <a {...attributes}>
+      <slot />
+    </a>
+  ) : (
+    <button {...attributes}>
+      <slot />
+    </button>
+  )
+}
 
-<style>
-  button, a {
+<style lang="scss">
+  button,
+  a {
     align-items: center;
     background-color: rgb(131, 58, 224);
     border-style: none;
@@ -42,4 +49,4 @@ attributes.class = size || DEFAULT_SIZE;
     padding: 0 24px;
     border-radius: 12px;
   }
-</style>  
+</style>
