@@ -6,6 +6,7 @@ import { reachGoal } from '../../yandexMetrikaWrapper';
 
 import { StyledInput, StyledPhoneInput, Subheader } from './styles';
 import { IContactProps } from './types';
+import { Fire } from './icons';
 
 const validateInput = (event: React.ChangeEvent<HTMLInputElement>) => {
   const input = event.target;
@@ -47,7 +48,7 @@ const Contact: FunctionComponent<IContactProps> = ({
     <>
       <Subheader>
         Kami akan segera menghubungi Anda melalui WhatsApp untuk mengonfirmasi
-        entri Anda 🔥
+        entri Anda <Fire />
       </Subheader>
       <div>
         <StyledInput

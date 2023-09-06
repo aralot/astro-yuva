@@ -11,7 +11,17 @@ import ProgressBar from './progressBar';
 
 import { BRANCH_CODE_INDONESIA, useForm } from './useForm';
 import { LOCALE, TIME_ZONE, StepsCollection, StepType } from './types';
-import { Form, Content, ButtonsWrapper, StyledH2 } from './styles';
+import { Form, Content, ButtonsWrapper, StyledH2, CenteredH2 } from './styles';
+import {
+  ManTechnologist,
+  ArtistPalette,
+  Abacus,
+  Books,
+  SmilingFace,
+  CrossMark,
+  FrowningFace,
+} from './icons';
+import { DesktopComputer } from './icons/DesktopComputer';
 
 const BEFORE_MOVE_TO_NEXT_STEP_DELAY_MS = 200;
 const FIRST_STEP = StepType.HOBBY;
@@ -58,10 +68,38 @@ const Steps: FunctionComponent = ({}) => {
   const steps: StepsCollection = {
     [StepType.HOBBY]: {
       buttons: [
-        { title: '🧑🏽‍💻 Ilmu Komputer', value: 'komputer' },
-        { title: '🎨 Seni, lukisan, desain', value: 'desain' },
-        { title: '📐 Matematika', value: 'matematika' },
-        { title: '📚 Kultur dan Sejarah', value: 'kultur' },
+        {
+          title: (
+            <>
+              <ManTechnologist /> Ilmu Komputer
+            </>
+          ),
+          value: 'komputer',
+        },
+        {
+          title: (
+            <>
+              <ArtistPalette /> Seni, lukisan, desain
+            </>
+          ),
+          value: 'desain',
+        },
+        {
+          title: (
+            <>
+              <Abacus /> Matematika
+            </>
+          ),
+          value: 'matematika',
+        },
+        {
+          title: (
+            <>
+              <Books /> Kultur dan Sejarah
+            </>
+          ),
+          value: 'kultur',
+        },
         { title: 'Semua yang di atas', value: 'semua' },
       ],
       component: FavoriteSubject,
@@ -89,13 +127,31 @@ const Steps: FunctionComponent = ({}) => {
       }),
       component: Age,
       setValue: setChildAge,
-      title: <span>2. Berapa usia anak Anda? 😊</span>,
+      title: (
+        <span>
+          2. Berapa usia anak Anda? <SmilingFace />
+        </span>
+      ),
       value: childAge,
     },
     [StepType.HAS_LAPTOP]: {
       buttons: [
-        { title: '💻 Ya', value: 'yes' },
-        { title: '❌ Tidak', value: 'no' },
+        {
+          title: (
+            <>
+              <CrossMark /> Ya
+            </>
+          ),
+          value: 'yes',
+        },
+        {
+          title: (
+            <>
+              <DesktopComputer /> Tidak
+            </>
+          ),
+          value: 'no',
+        },
       ],
       component: HasLaptop,
       setValue: setHasLaptop,
@@ -198,7 +254,8 @@ const Steps: FunctionComponent = ({}) => {
         )}
         {isSlotUsedStep && (
           <CenteredH2>
-            Oops! Jadwal sudah terisi. Silakan pilih jadwal lain 🙁
+            Oops! Jadwal sudah terisi. Silakan pilih jadwal lain{' '}
+            <FrowningFace />
           </CenteredH2>
         )}
         {stepType === StepType.SCHEDULE && (
@@ -239,6 +296,7 @@ const Steps: FunctionComponent = ({}) => {
           }
           disabled={!getIsNextActive() || isPending}
           type={isFinishStep ? 'submit' : 'button'}
+          width={isSlotUsedStep && '100%'}
         >
           {isSlotUsedStep ? 'Kembali' : isFinishStep ? 'Kirim' : 'Next'}
         </Button>
