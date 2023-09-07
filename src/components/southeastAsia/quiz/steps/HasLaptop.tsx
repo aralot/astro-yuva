@@ -7,17 +7,16 @@ import Button from './button';
 import { TwoColumnButtonsShort } from './styles';
 import { IStepProps } from './types';
 
-const buttonsData = [
-  { title: '💻 Ya', value: 'yes' },
-  { title: '❌ Tidak', value: 'no' },
-];
-
-const HasLaptop: FunctionComponent<IStepProps> = ({ onValueChange, value }) => {
-  const buttonIndex = buttonsData.findIndex(button => button.value === value);
+const HasLaptop: FunctionComponent<IStepProps> = ({
+  buttons,
+  onValueChange,
+  value,
+}) => {
+  const buttonIndex = buttons.findIndex(button => button.value === value);
 
   return (
     <TwoColumnButtonsShort $buttonIndex={buttonIndex}>
-      {buttonsData.map(({ title, value }) => (
+      {buttons.map(({ title, value }) => (
         <Button
           onClick={event => {
             reachGoal(
