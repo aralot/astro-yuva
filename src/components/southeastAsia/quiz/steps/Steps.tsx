@@ -139,7 +139,7 @@ const Steps: FunctionComponent = ({}) => {
         {
           title: (
             <>
-              <CrossMark /> Ya
+              <DesktopComputer /> Ya
             </>
           ),
           value: 'yes',
@@ -147,7 +147,7 @@ const Steps: FunctionComponent = ({}) => {
         {
           title: (
             <>
-              <DesktopComputer /> Tidak
+              <CrossMark /> Tidak
             </>
           ),
           value: 'no',
